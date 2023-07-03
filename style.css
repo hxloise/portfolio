@@ -1,0 +1,265 @@
+:root {
+    --white: #EBEBEB;
+    --yellow: #CCF301;
+    --blue: #A6C3B1;
+    --green: #283E31;
+}
+
+@font-face {
+    font-family: 'Thunder';
+    src: url('assets/THUNDER/Thunder-LC.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Thunder';
+    src: url('assets/THUNDER/Thunder-LightLC.ttf') format('truetype');
+    font-weight: light;
+}
+
+body {
+    font-family: 'Thunder', sans-serif;
+    color: var(--green);
+    background-color: var(--white);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    max-width: 100vw;
+    max-height: 100vh;
+
+    margin: 0%;
+    padding: 0%;
+}
+
+h1 {
+    font-size: 32px;
+    margin: 0%;
+}
+
+p {
+    font-weight: light;
+    font-size: 24px;
+    line-height: 1;
+    margin: 1.5% 0% 0% 0%;
+}
+
+#c-top {
+    height: 8vh;
+    padding: 6vh 6vh 0 6vh;
+}
+
+p.top-activity {
+    margin: -.2% 0% 0% 0%;
+}
+
+p.link-social {
+    text-decoration: underline;
+}
+
+p.text-social {
+    font-size: 20px;
+}
+
+#c-text-animation {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    align-items: flex-start;
+
+    max-width: 100vw;
+    height: 72vh;
+
+    gap: 20px;
+
+    padding: 6vh;
+}
+
+.b-letter {
+    display: flex;
+    flex-direction: column;
+}
+
+#c-bottom {
+    display: flex;
+    flex-direction: row;
+    max-width: 100vw;
+    height: 16vh;
+    padding: 0 6vh 6vh 6vh;
+}
+
+#bottom-c-timeline {
+    width: 20%;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#bottom-c-social {
+    display: flex;
+    flex-direction: row;
+    gap: 60px;
+    width: 80%;
+}
+
+.italics {
+    font-style: italic;
+}
+
+/******************************************** Media Queries ********************************************/
+
+/* Smartphone */
+@media (max-width:1000px) {
+    body {
+        max-height: 100vh;
+    }
+
+    img {
+        max-height: 15%;
+    }
+
+    #c-top {
+        height: 8vh;
+        padding: 6vh 3vh 0 3vh;
+    }
+
+    #c-text-animation {
+        max-height: 20%;
+        padding: 0 3vh 0 3vh;
+    }
+
+    #c-bottom {
+        flex-direction: column-reverse;
+        gap: 30px;
+        height: 100%;
+
+        padding: 0vh 3vh 6vh 3vh;
+    }
+
+    #bottom-c-timeline {
+        width: 100%;
+    }
+
+    #bottom-c-social {
+        overflow-x: scroll;
+        /* white-space: nowrap; */
+        width: 100%;
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+
+    .bottom-social {
+        min-width: 50vw;
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    #bottom-c-social::-webkit-scrollbar {
+        display: none;
+    }
+
+
+}
+
+/* resize height SVG */
+@media (max-height:400px) {
+
+    body {
+        height: 100%;
+    }
+
+    img {
+        max-height: 15%;
+    }
+}
+
+/* Without SVG */
+@media (max-height:350px) {
+
+    body {
+        height: 100%;
+    }
+
+    #c-top {
+        height: 100%;
+        padding: 40px;
+    }
+
+    #c-bottom {
+        height: 100%;
+        padding: 0 40px 40px 40px;
+    }
+
+    #c-text-animation {
+        display: none;
+    }
+}
+
+/******************************************** Pulsation ********************************************/
+
+#pulsation-container {
+    display: flex;
+}
+
+.pulsating-circle {
+    position: relative;
+    width: 30px;
+    height: 30px;
+    margin: auto;
+}
+
+.pulsating-circle:before {
+    content: '';
+    position: relative;
+    display: block;
+    width: 300%;
+    height: 300%;
+    box-sizing: border-box;
+    margin-left: -100%;
+    margin-top: -100%;
+    border-radius: 60px;
+    background-color: #E9F6CE;
+    animation: pulse-ring 1s cubic-bezier(0.215, 0.61, 0.355, 1) infinite;
+}
+
+.pulsating-circle:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: var(--yellow);
+    border-radius: 45px;
+    animation: pulse-dot 1s cubic-bezier(0.455, 0.03, 0.515, 0.955) -.4s infinite;
+}
+
+@keyframes pulse-ring {
+    0% {
+        transform: scale(.33);
+    }
+
+    80%,
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes pulse-dot {
+    0% {
+        transform: scale(.8);
+    }
+
+    50% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(.8);
+    }
+}
